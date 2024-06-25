@@ -1,0 +1,2 @@
+[submodule "frontend"]
+	url = git@github.com:wittysam8382/frontend.git
