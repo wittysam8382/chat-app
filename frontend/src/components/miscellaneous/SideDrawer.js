@@ -26,7 +26,6 @@ import ProfileModal from "./ProfileModal";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
 import ChatLoading from "../ChatLoading.js";
-import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../UserAvatar/UserListItem.js";
 import { Spinner } from "@chakra-ui/spinner";
 const SideDrawer = () => {
