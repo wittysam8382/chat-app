@@ -29,13 +29,12 @@ import ChatLoading from "../ChatLoading.js";
 import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../UserAvatar/UserListItem.js";
 import { Spinner } from "@chakra-ui/spinner";
-import {NotificationBadge, Effect} from "react-notification-badge"
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState();
-  const { user, setSelectedChat, chats, setChats, notification, setNotification } = ChatState();
+  const { user, setSelectedChat, chats, setChats } = ChatState();
   
   const history = useHistory();
 
@@ -138,28 +137,8 @@ const SideDrawer = () => {
         <div>
           <Menu>
             <MenuButton p={1}>
-              <NotificationBadge
-              count = {notification.length}
-              effect = {Effect.SCALE}
-              />
               <BellIcon fontSize={"2xl"} mx={1} />
             </MenuButton>
-            <MenuList pl={2}>
-              {!notification.length && "No New Messages"}
-              {notification.map((notif) => (
-                <MenuItem
-                  key={notif._id}
-                  onClick={() => {
-                    setSelectedChat(notif.chat);
-                    setNotification(notification.filter((n) => n !== notif));
-                  }}
-                >
-                  {notif.chat.isGroupChat
-                    ? `New Message in ${notif.chat.chatName}`
-                    : `New Message from ${getSender(user, notif.chat.users)}`}
-                </MenuItem>
-              ))}
-            </MenuList>
           </Menu>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
