@@ -25,6 +25,14 @@ app.use("/api/message", messageRoutes);
 
 // -----------------------Deployment------------------
 const __dirname1 = path.resolve();
+app.use(cors(
+  {
+    origin: {"https://deploy-mern-1whq.vercel.app"},
+    methods:{"POST", "GET"},
+    credentials: true
+  }
+  
+))
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname1, "/frontend/build")));
